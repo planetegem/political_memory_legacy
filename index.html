@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="nl" xml:lang="nl">
+    <head>
+        <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+        <meta name="description" content="Political Memory: an exciting game about Belgian politics">
+        <meta name="keywords" content="memory, game, encyclopedia belgica, politics, Willy De Clerq, Joke Schauvliege, Mathieu Michel, Jean-Luc Dehaene, Freya Van den Bossche, Siegfried Bracke, Tom Balthazar, Michel Daerden, Jean-Pierre Van Rossem">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="googlebot" content="notranslate">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Niels Van Damme">
+        <title>Political Memory</title>
+        <link rel="stylesheet" href="/eb/political_memory/css_political.css">
+    </head>
+    
+    <body>
+        <header>
+            <div id="ebtheme"></div>
+            <div id="title">
+                <h1>political memory</h1>
+                <p>"Every Politician is a two-faced piece of human trash," says a famous Belgian proverb. Match their faces together in this exciting game of political memory!</p>
+            </div>
+        </header>
+        <main>
+            <!-- <button style="position: absolute;" onclick="victory()">victory</button> -->
+            <segment id="controls">
+                <button id="clock">
+                    <span class="frame">--</span>
+                    <span id="timer-container">
+                        <span id="timer">good luck</span>
+                        <span id="timer-dummy">good luck</span>
+                    </span>
+                    <span class="frame">--</span>
+                </button>
+                <button id="shuffle" onclick="reset()">
+                    <h4>shuffle & restart</h4>
+                </button>
+            </segment>
+            <segment id="board">
+                <div class="card p1" data-value="p1" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">1</span>
+                    </div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p1" data-value="p1" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">2</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p2" data-value="p2" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">3</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p2" data-value="p2" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">4</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p3" data-value="p3" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">5</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p3" data-value="p3" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">6</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p4" data-value="p4" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">7</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p4" data-value="p4" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">8</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p5" data-value="p5" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">9</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p5" data-value="p5" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">10</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p6" data-value="p6" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">11</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p6" data-value="p6" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">12</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p7" data-value="p7" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">13</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p7" data-value="p7" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">14</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p8" data-value="p8" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">15</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p8" data-value="p8" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">16</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p9" data-value="p9" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">17</span></div>
+                    <div class="front"></div>
+                </div>
+                <div class="card p9" data-value="p9" onclick="fillMemory(this)">
+                    <div class="back"><span class="cardnumber">18</span></div>
+                    <div class="front"></div>
+                </div>
+            </segment>
+            <segment id="postgame">
+                <div class="p1">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Willy De Clerq</h2>
+                        <h3>member of the liberal party</h3>
+                        <p>A famous politician who held a variety of high political positions throughout his career. Contrary to the usual liberal habit of building political dynasties, he does not have any noteworthy descendants in politics.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p2">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Joke Schauvliege</h2>
+                        <h3>christian democrat</h3>
+                        <p>A national hero that uncovered the horrible truth about the Agalev conspiracy, namely that the worldwide climate marches were in reality just revenge for Flemish farmer's protests that happened 20 years ago.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p3">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Mathieu Michel</h2>
+                        <h3>member of the liberal party</h3>
+                        <p>On his first day as state secretary for digitalisation, he abandoned his car on the road because he couldn't find parking. Like all members of the powerful Michel dynasty, he is well known for his sheepish good looks.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p4">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Jean-Luc Dehaene</h2>
+                        <h3>christian democrat</h3>
+                        <p>The leader of 2 consecutive governments in the 90s, he was known as the "Master Plumber" for his skill in unclogging negotations. Not atypical of a Belgian politician, he was sometimes spotted carrying large bags of money.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p5">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Freya Van den Bossche</h2>
+                        <h3>socialist party member</h3>
+                        <p>Came into prominence after beating her father (als a politician) in a televised debat. She had a long political career plagued by sexism because of her being a woman, but people still tend to remember her simply as Freya.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p6">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Siegfried Bracke</h2>
+                        <h3>militant regionalist</h3>
+                        <p>A popular television reporter who quickly burned all of his bridges by going into politics. He is known for shouting, being a freemason and his longing to reunite Belgium & the Netherlands under the Dutch royal house.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p7">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Tom Balthazar</h2>
+                        <h3>socialist party member</h3>
+                        <p>An all but sure favorite for mayor in the 2018 Ghent elections, the slightest whisper of his name in a corruption scandal caused him to resign so quickly, we can only imagine the skeletons that were still hiding in his closet.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p8">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Michel Daerden</h2>
+                        <h3>socialist party member</h3>
+                        <p>While his career was marked by rumors of being drunk in public, he was known for his good humor when facing these accusations. He was elected on the slogan "Everybody likes daddy", a jab at his habit of calling himself 'papa'.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+                <div class="p9">
+                    <div class="scorecard"></div>
+                    <div class="scorecard second"></div>
+                    <div class="description">
+                        <h2>Jean-Pierre Van Rossem</h2>
+                        <h3>independant libertarian</h3>
+                        <p>Perhaps one of the most colorful figures in Belgian politics, he was known for liking fast cars and hating politicians. He had reportedly bedded over 1000 women and could drive from Ghent to Knokke in under 20 minutes.</p>
+                        <p>Found after <span class="score"></span>.</p>
+                    </div>
+                </div>
+            </segment>
+        </main>
+        <footer>
+            <button id="returnbutton" onclick="location.href='http://www.planetegem.be'" type="button">
+                <img id="return">
+                <h4>return&nbsp;to<br>planetegem</h4>
+            </button>
+            <p>&#169; 2022 Niels Van Damme | info@planetegem.be | <a href="https://www.instagram.com/planetegem/" style="text-decoration:none;color:black;">www.instagram.com/planetegem</a> <br> &#9825; <a href="http://www.pecten.be" target="_blank" style="text-decoration:none;color:black;">www.pecten.be</a> &#9825;</p>
+        </footer>
+        <script src="/eb/political_memory/js_political.js"></script>
+    </body>

@@ -1,0 +1,344 @@
+/* CINEMA SCREEN */
+
+:root {
+    --width: 2700px;
+    --fontclock: 99px;
+    --font: 72px;
+    --cw: 540px;
+    --cl: 810px;
+    --gap: 54px;
+}
+
+/* VERY LARGE SCREEN 2250-3750px */
+
+@media only screen and (max-width:3750px) {
+    :root {
+    --width: 1350px;
+    --fontclock: 49.5px;
+    --font: 36px;
+    --cw: 270px;
+    --cl: 405px;
+    --gap: 27px;
+    }
+}
+
+/* LARGE SCREEN 1750-2250px*/
+
+@media only screen and (max-width:2250px) {
+    :root {
+    --width: 900px;
+    --fontclock: 33px;
+    --font: 24px;
+    --cw: 180px;
+    --cl: 270px;
+    --gap: 18px;
+    }
+}
+
+/* CLASSIC SIZE 850-1750px */
+
+@media only screen and (max-width:1750px) {
+    :root {
+    --width: 600px;
+    --fontclock: 22px;
+    --font: 16px;
+    --cw: 120px;
+    --cl: 180px;
+    --gap: 12px;
+    }
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font);
+    flex-direction: column;
+    margin: 0.5em auto;
+    max-width: var(--width);
+}
+h1 {
+    font-variant: small-caps;
+    font-family: Verdana sans-serif;
+    margin-bottom: 0;
+    margin-top: -0.2em;
+}
+header p {
+    font-family: Verdana sans-serif;
+    opacity: 0.75;
+    margin-top: 0;
+    margin-bottom: 1.33em;
+}
+#title {
+    text-align: center;
+}
+#ebtheme {
+    background-image: url("/images/eb-grootgroot.svg");
+    width: 100%;
+    height: 5em;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+    margin: auto 1em;
+}
+
+/* footer */
+
+footer {
+    font-size: var(--gap);
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+footer p {
+    font-size: 0.75em;
+    text-align:center;
+    font-family: Georgia sans-serif;
+}
+#returnbutton {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    opacity: 0.75;
+    font-size: var(--gap);
+}
+#returnbutton h4 {
+    text-align: left;
+    margin: 0;
+    font-variant: small-caps;
+    margin-left: 0.2em;
+}
+#return {
+    background-image: url("/images/returngrey.svg");
+    width: 6em;
+    height: 3em;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+#returnbutton:hover {
+    color: #7D1E2D;
+    border-color: #7D1E2D20;
+}
+#returnbutton:hover #return {
+    background-image: url("/images/return.svg");
+}
+
+/* TIMER & BUTTONS */
+@font-face {
+    font-family: 'digital-7regular';
+    src: url('assets/digital-7-webfont.woff2') format('woff2'),
+         url('assets/digital-7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'digital-7_monomono';
+    src: url('assets/digital-7_mono-webfont.woff2') format('woff2'),
+         url('assets/digital-7_mono-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#controls {
+    max-width: var(--width);
+}
+#clock {
+    display: flex;
+    align-items: center;
+    font-size: var(--fontclock);
+    font-family: digital-7_monomono;
+    border: outset black 1px;
+    box-sizing: border-box;
+    margin: auto auto 0;
+}
+#timer {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+#timer-dummy {
+    visibility: hidden;
+}
+.frame {
+    padding: 0.1em 0.2em;
+}
+#shuffle {
+    display: flex;
+    font-size: var(--gap);
+    margin: 1px auto 0.5em;
+}
+#shuffle h4 {
+    text-align: center;
+    margin: 0;
+    font-variant: small-caps;
+    margin-left: 0.2em;
+}
+#shuffle:hover {
+    color: #7d5d79;
+    border-color: #7d5d79;
+}
+
+/* BOARD & SCORE BOARD */
+
+#board {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--cw) var(--cw) var(--cw) var(--cw) var(--cw) var(--cw);
+    place-items: stretch;
+    column-gap: var(--gap);
+    row-gap: var(--gap);
+    justify-content: center;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    max-height: 0;
+}
+#postgame {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s;
+    max-height: 0;
+}
+
+/* SCORE BOARD FORMATTING */
+
+#postgame > div {
+    display: grid;
+    grid-template-columns: var(--cw) var(--cw) var(--cw) var(--cw);
+    column-gap: var(--gap);
+    justify-content: center;
+    margin-bottom: var(--gap);
+}
+.scorecard {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: var(--cw);
+    height: var(--cl);
+    box-sizing: border-box;
+    align-self: center;
+}
+.description {
+    grid-column: span 2;
+    font-family: Verdana sans-serif;
+    text-align: center;
+    font-size: var(--font);
+}
+h2, h3 {
+    margin: 0;
+}
+h2 {
+    opacity: 0.80;
+}
+h3 {
+    font-size: 1.30em;
+    font-family: monospace;
+    font-variant: small-caps;
+    opacity: 0.65;
+    line-height: 0.90em;
+}
+.description p {
+    font-size: 0.90em;
+}
+h5 {
+    text-align: center;
+    font-variant: small-caps;
+    opacity: 0.65;
+    margin: 0.5em;
+}
+
+/* CARD TURN ANIMATION */
+
+.card {
+    width: var(--cw);
+    height: var(--cl);
+    transform-style: preserve-3d;
+    position: relative;
+    transition: transform 1.2s, opacity 0.1s;
+    text-align: center;
+    font-size: 22px;
+}
+.back {
+    background-image: url("assets/pm_backsidecolor.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.cardnumber {
+    position: absolute;
+    float: right;
+    right: 7.5%;
+    bottom: 5%;
+    color: #7d5d79;
+}
+.front {
+    background-size: contain;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    line-height: 200px;
+}
+.turned {
+    transform: rotateY(-180deg);
+}
+
+
+/* MOBILE REACTIVE */
+
+@media only screen and (max-width:850px) {
+    :root {
+    --width: 80vw;
+    --fontclock: 18px;
+    --font: 14px;
+    --cw: 26vw;
+    --cl: 39vw;
+    --gap: 2.6vw;
+    }
+    #board {
+        grid-template-columns: var(--cw) var(--cw) var(--cw);
+    }
+    #postgame > div {
+        grid-template-columns: var(--cw) var(--cw) var(--cw);
+    }
+    .second {
+        display: none;
+    }
+}
+
+/* CARD FACES */
+
+.p1 .front, .p1 .scorecard {
+    background-image: url("assets/memorywilly.svg");
+}
+.p2 .front, .p2 .scorecard {
+    background-image: url("assets/memoryjoke.svg");
+}
+.p3 .front, .p3 .scorecard {
+    background-image: url("assets/memorymathieu.svg");
+}
+.p4 .front, .p4 .scorecard {
+    background-image: url("assets/memoryjeanluc.svg");
+}
+.p5 .front, .p5 .scorecard {
+    background-image: url("assets/memoryfreya.svg");
+}
+.p6 .front, .p6 .scorecard {
+    background-image: url("assets/memorysiegfried.svg");
+}
+.p7 .front, .p7 .scorecard {
+    background-image: url("assets/memorytom.svg");
+}
+.p8 .front, .p8 .scorecard {
+    background-image: url("assets/memorymichel.svg");
+}
+.p9 .front, .p9 .scorecard {
+    background-image: url("assets/memoryjeanpierre.svg");
+}
